@@ -1,0 +1,35 @@
+{{!< default}}
+{{!-- The tag above means: insert everything in this file
+into the {body} of the default.hbs template --}}
+
+{{!-- The main content area --}}
+<header class="site-home-header">
+  {{> header-background background=@site.cover_image}}
+  {{!--Special header-image.hbs partial to generate the background image--}}
+    <div class="site-wrapper">
+      <div class="site-wrapper site-wrapper-x-s">
+        <h1 class="site-title">{{@site.title}}</h1>
+        <p class="site-description">{{@site.description}}</p>
+        <form class="site-home-header-form" action="https://formspree.io/YOUR@EMAIL.HERE" method="post">
+          <input type="email" name="_replyto" id="email-address" placeholder="name@mail.com" required>
+          <input class="button" type="submit" value="Subscribe">
+          <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+        </form>
+        {{#if @site.twitter}}
+          <a class="button button-muted" href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">{{{t "Follow us on Twitter"}}}</a>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</header>
+<main id="site-main" class="site-main">
+  <div class="site-wrapper posts">
+    <div class="post-feed">
+      {{!-- Iterate through each posts --}}
+      {{#foreach posts}}
+        {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
+        {{> "post-card"}}
+      {{/foreach}}
+    </div>
+  </div>
+</main>

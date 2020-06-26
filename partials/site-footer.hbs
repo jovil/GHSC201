@@ -1,0 +1,49 @@
+<footer class="site-footer">
+  <div class="site-wrapper">
+    <div class="site-wrapper site-wrapper-x-s">
+      <div class="site-footer-content">
+        <div class="col-subscribe">
+          <p class="site-footer-title">{{@site.title}}</p>
+          <h4 class="site-footer-description">{{@site.description}}</h4>
+          <form action="https://formspree.io/YOUR@EMAIL.HERE" method="post" class="site-footer-form">
+            <input type="email" name="_replyto" id="email-address" placeholder="name@mail.com" required>
+            <input class="button" type="submit" value="Subscribe">
+            <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission">
+          </form>
+        </div>
+
+        <div class="col-links">
+          {{#if @site.secondary_navigation}}
+          <div>
+            <h5 class="footer-link-title">{{{t "More"}}}</h5>
+            <nav class="secondary-navigation">
+            {{navigation type="secondary"}}
+            </nav>
+          </div>
+          {{/if}}
+          <div>
+            {{#if @site.facebook}}
+            <h5 class="footer-link-title">{{{t "Social"}}}</h5>
+            {{else if @site.twitter}}
+            <h5 class="footer-link-title">{{{t "Social"}}}</h5>
+            {{else}}
+            {{/if}}
+            <ul class="footer-social-list">
+              {{#if @site.facebook}}<li class="footer-social-item"><a href="{{facebook_url @site.facebook}}" target="_blank" rel="noopener">Facebook</a></li>
+              {{/if}}
+              {{#if @site.twitter}}<li class="footer-social-item"><a href="{{twitter_url @site.twitter}}" target="_blank" rel="noopener">Twitter</a></li>
+              {{/if}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="site-footer-meta">
+        <div class="card">
+          <div class="card-footer text-muted">
+            &copy; {{@site.title}} {{date format="YYYY"}} 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
